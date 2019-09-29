@@ -26,6 +26,13 @@
       color: #ffffff;
       padding-top: 41px;
     }
+    &__icon1{
+      color: #ffffff;
+      float: right;
+      position: relative;
+      top:-10px;
+      right: 20px;
+    }
   }
   .sidebar-group{
     padding-left: 20px;
@@ -66,10 +73,12 @@
       background-color: #ffffff;
       padding-left:40px; 
       &__logo1{
+        color: #333333;
         font-size: 20px;
         padding-top: 15px;
       }
       &__logo2{
+        color: #999999;
         font-size: 12px;
         padding-top: 15px;
       }
@@ -94,6 +103,7 @@
       border: solid 1px #eeeeee;
     }
     .contents-under{
+      color: #434A54;
       padding-left: 40px;
       position: relative;
       height: calc(100vh - 102px);
@@ -115,4 +125,43 @@
       padding-top: 10px;
       }
     }
+    .footer{
+      height: 80px;
+      background-color: #eeeeee;
+      width: calc(100% - 300px);
+      bottom: 0px;
+      position: fixed;
+      .footer-box{
+        width: 521px;
+        height: 50px;
+        margin: 15px 40px 15px 40px;
+        background-color: #fafafa;
+        position: absolute;
+        .footer-box__message{
+          color: #434A54;
+          font-size: 16px;
+          margin: 10px 10px;
+        }
+        .footer-box__icon{
+          right: 10px;
+          bottom: 15px;
+          position: absolute;
+        }
+      }
+      .footer-send__box{
+        background-color: #38aef0;
+        height: 50px;
+        width: 100px;
+        right: 0px;
+        position: absolute;
+        margin: 15px 40px 15px 15px;
+        .footer-bottan{
+          color: #fafafa;
+          text-align: center;
+          padding-top: 15px;
+        }
+      }
+    }
 }
+
+
