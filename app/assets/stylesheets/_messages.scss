@@ -137,12 +137,12 @@
         margin: 15px 40px 15px 40px;
         background-color: #fafafa;
         position: absolute;
-        .footer-box__message{
+        &__message{
           color: #434A54;
           font-size: 16px;
           margin: 10px 10px;
         }
-        .footer-box__icon{
+        &__icon{
           right: 10px;
           bottom: 15px;
           position: absolute;
