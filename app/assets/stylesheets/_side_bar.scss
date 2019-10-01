@@ -12,6 +12,7 @@
       font-size: $side_header_font;
       font-weight: bold;
     }
+    &__lists {
       display: inline-block;
       float: right;
       .list {
