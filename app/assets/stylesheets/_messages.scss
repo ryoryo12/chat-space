@@ -1,65 +1,50 @@
-.header{
-  width: 100%;
-  height: 20px;
-  background-color: #38aef0;
-    &__logo{
-      height: 20px;
-      color: white;
-      text-align: center;
-    }
-}
-
-.sidebar{
+.side-bar {
+  box-sizing: border-box;
+  color: $white;
   width: 300px;
-  height: 100%;
-  background-color: #2f3e51;
-  position: absolute;
-  .sidebar-user{
-    height: 102px;
-    width: 300px;
-    top: 0px;
-    background-color: #253141;
-    position: relative;
-    &__logo{
-      padding-left: 20px;
-      font-size: 16px;
-      color: #ffffff;
-      padding-top: 41px;
+  .header {
+    background-color: $side_blue_dark;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 20px;
+    &__name {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
     }
-    &__icon1{
-      color: #ffffff;
+    &__lists {
+      display: inline-block;
       float: right;
+      .list {
+        display: inline-block;
+      }
+      .icon {
+        color: $white;
+        font-size: 12px;
+      }
       position: relative;
       top:-10px;
       right: 20px;
       z-index: 1;
     }
   }
-  .sidebar-group{
-    padding-left: 20px;
-    height: calc(100vm - 102px);
-    color:#ffffff;
-    font-size: 15px;
-    &__logo1{
-      padding-top: 20px;
-    }
-    &__logo2{
-      padding-top: 5px;
-      font-size: 11px
-    }
-    &__logo3{
-      padding-top: 40px;
-    }
-    &__logo4{
-      padding-top: 5px;
-      font-size: 11px;
-    }
-    &__logo5{
-      padding-top: 40px;
-    }
-    &__logo6{
-      padding-top: 5px;
-      font-size: 11px;
+
+  .groups {
+    background-color: $side_blue_light;
+    height: calc(100vh - 100px);
+    padding: 0 20px;
+    .group {
+      box-sizing: border-box;
+      padding: 20px 0 40px;
+      &__name {
+        color: $white;
+        font-size: 12px;
+      }
+      &__message {
+        color: $white;
+        font-size: 12px;
+        margin-top: 5px;
+      }
     }
   }
 }
