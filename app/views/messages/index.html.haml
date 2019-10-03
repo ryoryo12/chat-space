@@ -1,55 +1,31 @@
-.header
-  .header__logo
-    グループを作成しました
+.wrapper
 
-.sidebar
-  .sidebar-user
-    .sidebar-user__logo
-      test-user
-    .sidebar-user__icon
-      = link_to new_group_path do
-        = fa_icon 'edit', class: 'icon'
-      = link_to edit_user_path(current_user) do
-        = fa_icon 'cog', class: 'icon'
-  .sidebar-group
-    .sidebar-group__logo1
-      test-group
-    .sidebar-group__logo2
-      さようなら
-    .sidebar-group__logo3
-      sample-group
-    .sidebar-group__logo4
-      hello!
-    .sidebar-group__logo5
-      example
-    .sidebar-group__logo6
-      まだメッセージはありません
+  = render 'shared/side_bar'
 
-.contents
-  .contents-top
-    .contents-top__logo1
-      test-group
-    .contents-top__box
-      .contents-top__edit
-        Edit
-    .contents-top__logo2
-      member-sample
-  .contents__border
-  .contents-under
-    .contents-under__logo1
-      test-user
-    .contents-under__logo2
-      こんにちは！
-    .contents-under__logo3
-      test-user
-    .contents-under__logo4
-      さようなら
-  .footer
-    .footer-box
-      .footer-box__message
-        type a message
-      .footer-box__icon
-        = fa_icon 'image'
-    .footer-send__box
-      .footer-bottan
-        Send
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          グループ名
+        %ul.left-header__members
+          Member：
+          %li.member
+            メンバー名
+          %li.member
+            メンバー名
+          %li.member
+            メンバー名
+      .right-header
+        .right-header__button
+          Edit
+    .messages
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
+            
