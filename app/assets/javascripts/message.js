@@ -14,14 +14,13 @@ $(function(){
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
+                    <p>
+                      ${img}
+                    </p>
                   </div>
                 </div>`
     return html;
   }
-
-
-
-
   $('form').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -35,15 +34,15 @@ $(function(){
       contentType:  false
     })
     .done(function(message){
-    var html = buildMessage(message);
-    $('.new_message')[0].reset();
-    $('.messages').append(html)
-    $('.form__submit').prop('disabled', false)
+      var html = buildMessage(message);
+      $('.new_message')[0].reset();
+      $('.messages').append({scrolltop: $('messages')[0].scrollHeight}, 'fast');
+      $('.form__submit').prop('disabled', false)
 
     })
     .fail(function(){
-    alert('エラー')
-    $('.form__submit').prop('disabled', false)
+      alert('エラー')
+      $('.form__submit').prop('disabled', false)
     })
   })
 });
