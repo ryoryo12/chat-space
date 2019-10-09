@@ -3,3 +3,4 @@ class Messages < ActiveRecord::Migration[5.0]
     drop_table :messages
   end
 end
+
