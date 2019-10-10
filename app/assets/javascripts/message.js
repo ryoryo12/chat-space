@@ -1,10 +1,6 @@
 $(function() {
   function createImage(message){
-    if(message.image.url == null){
-      return ``
-    } else {
-      return `<img class="lower-message__image" src='${message.image.url}'></img>`
-    }
+    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
   }
 
   function buildHTML(message){
