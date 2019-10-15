@@ -6,14 +6,11 @@ $(function() {
   function buildHTML(message){
       var html = `<div class="message" data-id="${message.id}">
                     <div class="message__upper">
-                      <div class="upper__name">
                         ${message.user_name}
-                      </div>
                       <div class="upper__date">
                         ${message.date}
                       </div>
                     </div>
-                    <div class="message-text">
                       <p class="lower-message__content">
                         ${message.content}
                       </p>
@@ -22,7 +19,8 @@ $(function() {
     return html
   }
 
-  $("#new_message").on('submit',function(){
+  $('#new_message').on('submit', function(e){
+    e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
@@ -33,39 +31,51 @@ $(function() {
       processData: false,
       contentType: false
     })
-    .done(function(message){
-      var html = buildHTML(message)
-      $('div').animate({scrollTop: $('.messages').height()})
+    .done(function(message) {
+      var html = buildHTML(message);
       $('.messages').append(html)
+      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       $('form')[0].reset();
     })
-    .fail(function(){
-      alert('messageか画像を入力してください')
+    .fail(function() {
+      alert('エラー');
     })
     return false;
   })
 
-  var reloadMessages = function() {
-    if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      last_message_id = $('.message:last').data("id");
+
+  // 自動更新
+  $(function() {
+    $(function() {
+      if (location.href.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }
+    });
+    function update(){
+      if($('.message')[0]){
+        var message_id = $('.message:last').data('id');
+      } else {
+        return false
+      }
+
       $.ajax({
         url: "api/messages",
         type: 'GET',
-        dataType: 'json',
-        data: {id: last_message_id}
+        data: { id : message_id },
+        dataType: 'json'
       })
-      .done(function(messages) {
-        var insertHTML = '';
-        messages.forEach(function (message) {
-        insertHTML = buildHTML(message);
-        $('.messages').append(insertHTML); 
-        $('div').animate({scrollTop: $('.messages').height()})
-        })
+      .done(function(data){
+        if (data.length){
+          $.each(data, function(index,data){
+            var html = buildHTML(data);
+            $('.messages').append(html)
+            $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+          })
+        }
       })
-      .fail(function() {
-        alert('更新に失敗しました');
-      });
-    };
-  } 
-  setInterval(reloadMessages, 5000); 
+      .fail(function(){
+        console.log('自動更新に失敗しました')
+      })
+    }
+  })
 });
