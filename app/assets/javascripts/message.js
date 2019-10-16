@@ -1,20 +1,24 @@
 $(function() {
-  function createImage(message){
-    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
-  }
-
+  
   function buildHTML(message){
+
+    image = (message.image) ? `<img class= "lower-message__image" src="${message.image}" >` : "";
+
       var html = `<div class="message" data-id="${message.id}">
-                    <div class="message__upper">
-                        ${message.user_name}
-                      <div class="upper__date">
-                        ${message.date}
-                      </div>
+                    <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${message.user_name}
                     </div>
-                      <p class="lower-message__content">
-                        ${message.content}
-                      </p>
-                        ${createImage(message)}  
+                  <div class="upper-message__date">
+                    ${message.date}
+                  </div>
+                  </div>
+                  <div class="lower-message">
+                  <p class="lower-message__content">
+                    ${message.content}
+                  </p>
+                    ${image}
+                  </div>
                   </div>`
     return html
   }

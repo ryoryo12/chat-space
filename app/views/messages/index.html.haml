@@ -11,8 +11,7 @@
           Member：
           = @users.pluck(:name).join(",")
       .right-header
-        .right-header__button
-          = link_to 'Edit', edit_group_path(@group), class: "button"
+        = link_to 'Edit', edit_group_path(@group), class: "right-header__button"
     .messages
       = render @messages
     .form
