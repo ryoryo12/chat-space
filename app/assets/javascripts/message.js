@@ -6,19 +6,19 @@ $(function() {
 
       var html = `<div class="message" data-id="${message.id}">
                     <div class="upper-message">
-                    <div class="upper-message__user-name">
-                      ${message.user_name}
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                      </div>
+                      <div class="upper-message__date">
+                        ${message.date}
+                      </div>
                     </div>
-                  <div class="upper-message__date">
-                    ${message.date}
-                  </div>
-                  </div>
-                  <div class="lower-message">
-                  <p class="lower-message__content">
-                    ${message.content}
-                  </p>
-                    ${image}
-                  </div>
+                    <div class="lower-message">
+                      <p class="lower-message__content">
+                        ${message.content}
+                      </p>
+                      ${image}
+                    </div>
                   </div>`
     return html
   }
@@ -47,11 +47,9 @@ $(function() {
     return false;
   })
 
-
-  // 自動更新
   $(function() {
     $(function() {
-      if (location.href.match(/\/groups\/\d+\/messages/)) {
+      if (window.location.href.match(/\/groups\/\d+\/messages/)) {
         setInterval(update, 5000);
       }
     });
@@ -59,7 +57,7 @@ $(function() {
       if($('.message')[0]){
         var message_id = $('.message:last').data('id');
       } else {
-        return false
+        var message_id = 0;
       }
 
       $.ajax({

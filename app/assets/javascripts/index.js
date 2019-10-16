@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $(function() {
   
     var search_list = $("#user-search-result");
@@ -62,5 +62,5 @@ $(document).on('turbolinks:load', function(){
       $(document).on("click", ".user-search-remove", function () {
         $(this).parent().remove();
       });
-    });
   });
+});
